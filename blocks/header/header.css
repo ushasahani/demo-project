@@ -270,3 +270,31 @@ header nav .nav-sections ul > li > ul > li {
 header nav .nav-tools {
   grid-area: tools;
 }
+.section.nav-tools {
+    position: absolute;
+    top: -44px;
+    left: 0;
+    right: 0;
+    background: #0659d4;
+    height: 44px;
+    display: flex;
+    color: #fff;
+    width: 100%;
+    .default-content-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+}
+
+header.header-wrapper {
+    position: relative;
+    padding-top: 44px;
+    a.button.primary {
+    background: transparent;
+    border: transparent;
+    margin: 0;
+  }
+}
+

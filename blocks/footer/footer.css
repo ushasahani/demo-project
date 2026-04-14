@@ -18,3 +18,32 @@ footer .footer p {
     padding: 40px 32px 24px;
   }
 }
+footer.footer-wrapper {
+    background: #0659d4;
+    color: #fff;
+    .section.custom-footer{
+        &.columns-container {
+          h2 {
+            font-size: 18.03px;
+            margin-bottom: 20px;
+          }
+          ul{
+            padding: 0;
+             margin: 0;
+             display: flex;
+             flex-direction: column;
+             gap: 5px;
+            li{
+                  list-style: none;
+                  padding: 5px;
+
+                  a{
+                  color: #fff;
+                  text-decoration: none;
+                  }
+            }
+          }
+        }
+    }
+
+}
