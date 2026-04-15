@@ -1,53 +1,36 @@
-.marquee-wrapper {
-  width: 100%;
-  padding: 10px 0;
-  .marquee.block {
-    overflow: hidden;
-     max-width: 1140px;
-    margin: 0 auto;
-   }
-.marquee.block p {
-    -webkit-text-stroke: 1px #888888;
-    -webkit-text-fill-color: transparent;
-    font-size: 100px;
-    margin: 0 40px;
-    padding: 3px 0;
-}
-
-.marquee > div > div:hover {
-  animation-play-state: paused;
-}
-}
-
-.marquee p {
-  margin: 0;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-   .section.marquee-container {
-    padding: 90px 0px;
-    margin: 0 !important;
-        h4 {
-    font-size: 18px;
-    color: #0659d4;
-    font-weight: 500;
-    text-align: center;
-}
-
-h2 {
-    margin: auto;
-    font-size: 32px;
-    text-align: center;
-    font-weight: 500;
-}
-}
+/* =============================
+   Layout Containers
+   ============================= */
 
 .marquee-wrapper {
   width: 100%;
   overflow: hidden;
   padding: 10px 0;
 }
+
+.section.marquee-container {
+  padding: 90px 0;
+  margin: 0 !important;
+}
+
+/* Headings */
+.section.marquee-container h4 {
+  font-size: 18px;
+  color: #0659d4;
+  font-weight: 500;
+  text-align: center;
+}
+
+.section.marquee-container h2 {
+  margin: auto;
+  font-size: 32px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* =============================
+   Marquee Block
+   ============================= */
 
 .marquee.block {
   max-width: 1140px;
@@ -55,31 +38,50 @@ h2 {
   overflow: hidden;
 }
 
-/* 👇 THIS is the key fix */
+/*
+  ✅ THIS is the animated element
+  ✅ Only ONE animation exists
+*/
+
+.marquee > div {
+  display: flex;
+  width: max-content;
+  flex-wrap: nowrap;
+  align-items: center;
+  animation: marquee-rtl 35s linear infinite;
+}
+
+/* Pause animation on hover */
+.marquee > div:hover {
+  animation-play-state: paused;
+}
+
+/* =============================
+   Marquee Content (Children)
+   ============================= */
+
 .marquee > div > div {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   gap: 50px;
   white-space: nowrap;
-  animation: marquee-rtl 35s linear infinite;
 }
 
-/* Text styling */
+/* Text Styling */
 .marquee p {
   -webkit-text-stroke: 1px #888;
   -webkit-text-fill-color: transparent;
   font-size: 100px;
-  margin: 0;
+  margin: 0 40px;
+  padding: 3px 0;
   white-space: nowrap;
 }
 
-/* Pause animation on hover */
-.marquee > div > div:hover {
-  animation-play-state: paused;
-}
+/* =============================
+   Animation
+   ============================= */
 
-/* Right to Left animation */
 @keyframes marquee-rtl {
   from {
     transform: translateX(0);

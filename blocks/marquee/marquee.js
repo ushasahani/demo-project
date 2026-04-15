@@ -1,12 +1,19 @@
 export default function decorate(block) {
-  const inner = block.querySelector(':scope > div > div');
-  if (!inner) return;
+  const track = block.querySelector(':scope > div');
+  const content = track?.querySelector(':scope > div');
 
-  inner.classList.add('marquee-track');
+  // Safety checks
+  if (!track || !content || track.dataset.cloned === 'true') return;
 
-  // Duplicate content for seamless loop
-  const clone = inner.cloneNode(true);
+  // Clone only once for seamless loop
+  const clone = content.cloneNode(true);
   clone.setAttribute('aria-hidden', 'true');
 
-  inner.parentElement.appendChild(clone);
+  track.appendChild(clone);
+  track.dataset.cloned = 'true';
+
+  // Optional classes (for clarity/debugging)
+  track.classList.add('marquee-track');
+  content.classList.add('marquee-content');
+  clone.classList.add('marquee-content');
 }
