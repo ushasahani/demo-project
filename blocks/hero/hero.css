@@ -1,10 +1,4 @@
-.section.custom-hero.hero-carousel-container {
-    max-width: 100%;
-    margin: 0;
-    .hero-carousel-wrapper{
-      max-width: 100%;
-    }
-}
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;

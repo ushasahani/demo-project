@@ -19,28 +19,12 @@
 }
 }
 
-.marquee > div > div {
-  display: inline-flex;
-  gap: 50px;
-  white-space: nowrap;
-  animation: marquee-rtl 35s linear infinite; /* slow speed */
-}
-
 .marquee p {
   margin: 0;
   font-size: 20px;
   font-weight: bold;
 }
 
-/* Start immediately, move slowly */
-@keyframes marquee-rtl {
-  0% {
-    transform: translateX(0);        /* START VISIBLE */
-  }
-  100% {
-    transform: translateX(-100%);    /* move out left */
-  }
-}
    .section.marquee-container {
     padding: 90px 0px;
     margin: 0 !important;
@@ -57,4 +41,50 @@ h2 {
     text-align: center;
     font-weight: 500;
 }
+}
+
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.marquee.block {
+  max-width: 1140px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* 👇 THIS is the key fix */
+.marquee > div > div {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 50px;
+  white-space: nowrap;
+  animation: marquee-rtl 35s linear infinite;
+}
+
+/* Text styling */
+.marquee p {
+  -webkit-text-stroke: 1px #888;
+  -webkit-text-fill-color: transparent;
+  font-size: 100px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Pause animation on hover */
+.marquee > div > div:hover {
+  animation-play-state: paused;
+}
+
+/* Right to Left animation */
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }

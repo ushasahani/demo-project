@@ -3,15 +3,18 @@
  * - Builds accordion items
  * - Optional tabs logic
  * - Wraps default content + accordion into one layout wrapper
+ * - Opens FIRST accordion item by default
  */
 
 export default function decorate(block) {
-  // ✅ Only apply to custom accordion blocks
+  // ✅ Only apply to custom accordion
   if (!block.classList.contains('custom-accordion')) return;
 
   /* =================================================
    * STEP 1: CREATE ACCORDION STRUCTURE
    * ================================================= */
+  let accordionIndex = 0;
+
   [...block.children].forEach((row) => {
     // Skip non-accordion rows (e.g. header row)
     if (row.children.length !== 2) return;
@@ -29,9 +32,16 @@ export default function decorate(block) {
     // Accordion wrapper
     const details = document.createElement('details');
     details.className = 'accordion-item';
-    details.append(summary, body);
 
+    // ✅ OPEN FIRST ACCORDION BY DEFAULT
+    if (accordionIndex === 0) {
+      details.open = true;
+    }
+
+    details.append(summary, body);
     row.replaceWith(details);
+
+    accordionIndex += 1;
   });
 
   /* =================================================
@@ -71,12 +81,14 @@ export default function decorate(block) {
       tabContents.appendChild(content);
     });
 
-    brochures.forEach((h3) => tabButtons.appendChild(h3.cloneNode(true)));
+    brochures.forEach((h3) =>
+      tabButtons.appendChild(h3.cloneNode(true)),
+    );
 
     accordionBody.innerHTML = '';
     accordionBody.append(tabTitles, tabContents, tabButtons);
 
-    // Activate first tab
+    // ✅ Activate first tab
     tabTitles.querySelector('.tab-title')?.classList.add('active');
     tabContents.querySelector('.tab-content')?.classList.add('active');
 
@@ -85,18 +97,25 @@ export default function decorate(block) {
       const target = e.target.closest('.tab-title');
       if (!target) return;
 
-      tabTitles.querySelectorAll('.tab-title')
-        .forEach(t => t.classList.remove('active'));
-      tabContents.querySelectorAll('.tab-content')
-        .forEach(c => c.classList.remove('active'));
+      tabTitles
+        .querySelectorAll('.tab-title')
+        .forEach((t) => t.classList.remove('active'));
+      tabContents
+        .querySelectorAll('.tab-content')
+        .forEach((c) => c.classList.remove('active'));
 
       target.classList.add('active');
-      tabContents.querySelector(`#${target.dataset.tab}`)?.classList.add('active');
+      tabContents
+        .querySelector(`#${target.dataset.tab}`)
+        ?.classList.add('active');
     });
   }
 
   block.querySelectorAll('.accordion-item').forEach((item, index) => {
-    initializeTabs(item.querySelector('.accordion-item-body'), index);
+    initializeTabs(
+      item.querySelector('.accordion-item-body'),
+      index,
+    );
   });
 
   /* =================================================
@@ -105,8 +124,10 @@ export default function decorate(block) {
   const section = block.closest('.section');
   if (!section) return;
 
-  const defaultContent = section.querySelector('.default-content-wrapper');
-  const accordionWrapper = section.querySelector('.accordion-wrapper');
+  const defaultContent =
+    section.querySelector('.default-content-wrapper');
+  const accordionWrapper =
+    section.querySelector('.accordion-wrapper');
 
   if (!defaultContent || !accordionWrapper) return;
 

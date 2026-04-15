@@ -206,7 +206,7 @@ header nav .nav-sections ul > li > ul > li {
     content: '';
     display: inline-block;
     position: absolute;
-    top: 0.5em;
+    top: 3px;
     right: 2px;
     transform: rotate(135deg);
     width: 6px;
@@ -226,11 +226,22 @@ header nav .nav-sections ul > li > ul > li {
     display: flex;
     gap: 24px;
     margin: 0;
+    justify-content: end;
+    align-items: center;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li {
     flex: 0 1 auto;
     position: relative;
+    &:last-child a{
+            background-color: #0659d4;
+            padding: 8px 32px;
+            display: block;
+            font-size: 18px;
+            margin-left: 20px;
+            border-radius: 5px;
+            color: #fff;
+    }
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
@@ -271,10 +282,6 @@ header nav .nav-tools {
   grid-area: tools;
 }
 .section.nav-tools {
-    position: absolute;
-    top: -44px;
-    left: 0;
-    right: 0;
     background: #0659d4;
     height: 44px;
     display: flex;
@@ -285,12 +292,25 @@ header nav .nav-tools {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    p{
+      font-size: 15px;
+      line-height: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
 }
+    img{
+      width: 20px;
+      height: 20px;
+      float: left;
+      margin-right: 10px;
+    }
 }
 
 header.header-wrapper {
     position: relative;
-    padding-top: 44px;
     a.button.primary {
     background: transparent;
     border: transparent;
@@ -298,3 +318,202 @@ header.header-wrapper {
   }
 }
 
+/* =====================================================
+   NAV TOOLS TOP BAR
+   ===================================================== */
+
+.section.nav-tools {
+  background-color: #0b5ed7; /* blue bar */
+  color: #fff;
+  padding: 10px 0;
+  width: 100%;
+}
+
+/* Ensure content is constrained */
+.section.nav-tools {
+  display: flex;
+  justify-content: center;
+  padding: 0px 30px;
+  box-sizing: border-box;
+}
+
+.section.nav-tools > .default-content-wrapper {
+  /* max-width: 1140px; */
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  /* padding: 0 16px; */
+}
+
+/* =====================================================
+   LEFT SIDE: ADDRESS + EMAIL + WELCOME
+   ===================================================== */
+
+.section.nav-tools > .default-content-wrapper:first-child {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: left;
+}
+
+/* Individual info blocks */
+.section.nav-tools p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Email button styling reset */
+.section.nav-tools .button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.section.nav-tools .button-wrapper .button {
+  background: none;
+  padding: 0;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* =====================================================
+   ICONS (LEFT INFO ICONS)
+   ===================================================== */
+
+.section.nav-tools img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1); /* make icons white */
+}
+
+/* =====================================================
+   RIGHT SIDE: SOCIAL ICONS
+   ===================================================== */
+
+.section.nav-tools > .default-content-wrapper:last-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100px;
+}
+
+/* Social icon paragraphs */
+.section.nav-tools > .default-content-wrapper:last-child p {
+  margin: 0;
+}
+
+/* Social icon links */
+.section.nav-tools > .default-content-wrapper:last-child a {
+  display: flex;
+  align-items: center;
+}
+
+/* Slight hover effect */
+.section.nav-tools > .default-content-wrapper:last-child img {
+  width: 18px;
+  height: 18px;
+  transition: opacity 0.3s ease;
+}
+
+.section.nav-tools > .default-content-wrapper:last-child a:hover img {
+  opacity: 0.8;
+}
+
+/* =====================================================
+   RESPONSIVE (MOBILE)
+   ===================================================== */
+
+@media (max-width: 900px) {
+  .section.nav-tools > .default-content-wrapper {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .section.nav-tools > .default-content-wrapper:first-child {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .section.nav-tools > .default-content-wrapper:last-child {
+    justify-content: center;
+  }
+}
+/* ================================
+   TABLET (≤ 900px)
+   ================================ */
+@media (max-width: 900px) {
+  .section.nav-tools {
+    padding: 8px 16px;
+  }
+
+  .section.nav-tools > .default-content-wrapper {
+    gap: 10px;
+  }
+
+  /* Left content wraps nicely */
+  .section.nav-tools > .default-content-wrapper:first-child {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  /* Reduce text size slightly */
+  .section.nav-tools p {
+    font-size: 13px;
+  }
+}
+
+/* ================================
+   MOBILE (≤ 600px)
+   ================================ */
+@media (max-width: 600px) {
+  .section.nav-tools {
+    height: auto;
+    padding: 12px 16px;
+  }
+
+  /* Stack everything vertically */
+  .section.nav-tools {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .section.nav-tools > .default-content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Left content centered */
+  .section.nav-tools > .default-content-wrapper:first-child {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* Social icons centered */
+  .section.nav-tools > .default-content-wrapper:last-child {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Text + icon alignment */
+  .section.nav-tools p {
+    justify-content: center;
+    line-height: 1.4;
+  }
+
+  /* Hide welcome text if needed (optional) */
+  /*
+  .section.nav-tools p strong {
+    display: none;
+  }
+  */
+}

@@ -1,75 +1,175 @@
+/* =====================================================
+   STORY SECTION BASE
+   ===================================================== */
 
-.section.story.story-container{
-    margin: 0;
-    padding: 90px 0px;
-        > div {
-    max-width: 1140px;
-    }
-    .story.block.story-layout {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.section.story.story-container {
+  margin: 0;
+  padding: 90px 0;
+}
+
+.section.story.story-container > div {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   LAYOUT
+   ===================================================== */
+
+.story.block.story-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .story-image {
-    width: 50%;
+  width: 50%;
 }
 
 .story-content.right {
-    width: 50%;
-    padding: 0px 0px 0px 20px;
+  width: 50%;
+  padding-left: 40px;
 }
 
+/* =====================================================
+   TEXT STYLES
+   ===================================================== */
+
 .story-content h4 {
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 18px;
-    color: #0659d4;
-    margin: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #0659d4;
+  margin: 0;
 }
 
 .story-text h2 {
-    margin: auto;
-    font-size: 32px;
+  margin: 0;
+  font-size: 32px;
+  font-weight: 400;
 }
 
 .story-text p {
-    font-size: 16px;
-}
-.story-content.right .story-content+.story-content {
-    display: flex;
+  font-size: 16px;
 }
 
+/* =====================================================
+   INNER CONTENT SPLIT
+   ===================================================== */
+
+.story-content.right .story-content + .story-content {
+  display: flex;
+}
+
+/* Left block */
 .story-left {
-    width: 50%;
-        a {
-            margin-top: 15px;
-        padding: 15px 40px 15px 40px;
-        background: #0659d4;
-        border-radius: 5px;
-        text-decoration: none;
-        color: #fff;
-        display: inline-block;
-            &:hover{
-            background: #0541a0;
-            }
-        }
-        h2 {
-            font-size: 18.03px;
-            font-weight: 500;
-        }
-    }
-    .story-right{
-        li{
-            list-style: none;
-            text-align: center;
-            margin-bottom: 15px;
-            p:first-child{
-                font-size: 80px;
-                color: #0659d4;
-                margin: 0;
-                line-height: 58px;
-            }
-        }
-    } 
+  width: 50%;
+}
+
+.story-left h2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.story-left a {
+  margin-top: 15px;
+  padding: 15px 40px;
+  background: #0659d4;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+}
+
+.story-left a:hover {
+  background: #0541a0;
+}
+
+/* Right block */
+.story-right {
+  width: 50%;
+}
+
+.story-right li {
+  list-style: none;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.story-right li p:first-child {
+  font-size: 80px;
+  color: #0659d4;
+  margin: 0;
+  line-height: 58px;
+}
+
+/* =====================================================
+   TABLET (≤1024px)
+   ===================================================== */
+
+@media (max-width: 1024px) {
+  .story.block.story-layout {
+    flex-direction: column;
+  }
+
+  .story-image,
+  .story-content.right {
+    width: 100%;
+  }
+
+  .story-content.right {
+    padding-left: 0;
+    margin-top: 30px;
+  }
+
+  .story-content.right .story-content + .story-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .story-left,
+  .story-right {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   MOBILE (≤767px)
+   ===================================================== */
+
+@media (max-width: 767px) {
+  .section.story.story-container {
+    padding: 60px 0;
+  }
+
+  .story-content h4 {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .story-text h2 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .story-text p {
+    text-align: center;
+  }
+
+  .story-left {
+    text-align: center;
+  }
+
+  .story-left a {
+    margin: 20px auto 0;
+  }
+
+  .story-right {
+    text-align: center;
+  }
+
+  .story-right li p:first-child {
+    font-size: 56px;
+    line-height: 1;
+  }
 }
